@@ -1,3 +1,28 @@
+<script setup>
+import logo from '~/assets/LogoDaptee.svg';
+import { useState } from '#app';
+const props = defineProps(['onSearch']);
+
+const searchInput = ref('');
+
+const handleSearch = () => {
+    console.log(props)
+    props.onSearch(searchInput); // Llama a la función pasada desde el padre
+};
+
+
+const showProfile = useState("showProfile", () => false);
+const toggleProfile = () => {
+    showProfile.value = !showProfile.value
+}
+const logout = () => {
+    localStorage.removeItem('user');
+    showProfile.value = !showProfile.value
+    navigateTo('/');
+}
+</script>
+
+
 <template>
     <nav class="w-full bg-gray-800">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -94,25 +119,3 @@
     </nav>
 </template>
 
-<script setup>
-import logo from '~/assets/LogoDaptee.svg';
-import { useState } from '#app';
-const props = defineProps(['onSearch']);
-
-const searchInput = ref('');
-
-const handleSearch = () => {
-    console.log(props)
-    props.onSearch(searchInput); // Llama a la función pasada desde el padre
-};
-
-
-const showProfile = useState("showProfile", () => false);
-const toggleProfile = () => {
-    showProfile.value = !showProfile.value
-}
-const logout = () => {
-    showProfile.value = !showProfile.value
-    navigateTo('/');
-}
-</script>

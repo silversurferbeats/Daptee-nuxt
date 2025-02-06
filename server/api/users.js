@@ -1,6 +1,7 @@
-// server/api/products.js
-export default defineEventHandler((event) => {  
-  return [
+import { readBody, createError } from 'h3';
+
+export default defineEventHandler(async (event) => {
+  const users = [
     {
       name: "Dr. Adam Kreiger",
       avatar:
@@ -161,5 +162,45 @@ export default defineEventHandler((event) => {
       password: "ZCwnjldT2G1Kk4r",
       id: "20",
     },
+    {
+      name: "Daptee",
+      avatar:
+        "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/254.jpg",
+      email: "Daptee@hotmail.com",
+      password: "Daptee2025",
+      id: "21",
+    },
   ];
+
+  if (event.node.req.method === 'POST') {
+    try {
+      const body = await readBody(event);
+      console.log('Body recibido (POST):', body);
+
+      const userFound = users.find(user => user.name === body.name && user.password === body.password);
+
+      if (userFound) {
+        return userFound;
+      } else {
+        throw createError({
+          statusCode: 401, // Use 401 for authentication failure
+          statusMessage: 'Credenciales incorrectas'
+        });
+      }
+    } catch (error) {
+      console.error('Error en POST:', error);
+      throw createError({
+        statusCode: 500, // Internal server error
+        statusMessage: 'Error interno del servidor'
+      });
+    }
+  } else if (event.node.req.method === 'GET') {
+    console.log('Petición GET recibida');
+    return users; // Devuelve la lista de usuarios para GET
+  } else {
+    throw createError({
+      statusCode: 405,
+      statusMessage: 'Método no permitido'
+    });
+  }
 });

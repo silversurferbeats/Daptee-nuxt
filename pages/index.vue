@@ -1,42 +1,24 @@
 <script setup>
 import imageBG from "../public/ImgBg.png";
 import { ref } from "vue";
-
-const UserValid = {
-    "user": "Daptee",
-    "password": "Daptee2025"
-}
+import { useAsyncData } from 'nuxt/app';
 
 const form = ref({
     email: '',
     password: ''
 })
 
-const handleSubmit =  () => {
-    // try {
-    //     const response = await fetch('#', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'aplication/json' 
-    //         },
-    //         body: JSON.stringify(form.value)
-    //     })
-    //     if(!response.ok){
-    //         throw new Error('error en el envio del formulario')
-    //     }
-    //     const result = await response.json();
-    // } catch(e){
-    //     console.error('error al enviar formulario:', e)
-    // }
-    // import { useAsyncData } from 'nuxt/app';
+const handleSubmit = async  () => {
+    const { data: user } = await useAsyncData('user', () => $fetch('/api/users', {
+        method: 'post',
+        body: {
+            name: form.value.email,
+            password: form.value.password
+        }
+    }));
 
-    // const {data: user} = await useAsyncData('user', () => $fetch('/api/users'));
-
-    // console.log('user--->', user);
-
-
-
-    if(UserValid.user === form.value.email && UserValid.password === form.value.password){
+    if(user){
+        localStorage.setItem('user', JSON.stringify(user.value));
         navigateTo('/dashboard');
     } else {
         alert('Usuario incorrecto');
