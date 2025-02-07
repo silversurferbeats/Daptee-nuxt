@@ -3,7 +3,6 @@ import { useAsyncData } from 'nuxt/app';
 import { reactive } from 'vue';
 import logo from '~/assets/LogoDaptee.svg';
 
-
 const { data: users } = await useAsyncData('users', () =>
     $fetch('/api/users')
 );
