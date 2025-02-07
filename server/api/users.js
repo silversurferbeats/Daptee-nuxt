@@ -165,7 +165,7 @@ export default defineEventHandler(async (event) => {
     {
       name: "Daptee",
       avatar:
-        "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/254.jpg",
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
       email: "Daptee@hotmail.com",
       password: "Daptee2025",
       id: "21",
