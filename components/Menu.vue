@@ -1,5 +1,5 @@
 <template>
-    <div class="sticky top-0 card w-72 bg-white p-5 shadow-md shadow-purple-200/50 rounded-md">
+    <div class="sticky top-0 card w-full bg-white p-5 shadow-md shadow-purple-200/50 rounded-md">
         <ul class="w-full sticky top-4 gap-2">
             <li class="flex-center cursor-pointer p-16-semibold w-full whitespace-nowrap">
                 <a href="/users" :class="{ border: selected === 'users' }"

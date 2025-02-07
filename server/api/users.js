@@ -1,4 +1,4 @@
-import { readBody, createError } from 'h3';
+import { createError, getQuery } from "h3";
 
 export default defineEventHandler(async (event) => {
   const users = [
@@ -172,35 +172,59 @@ export default defineEventHandler(async (event) => {
     },
   ];
 
-  if (event.node.req.method === 'POST') {
-    try {
-      const body = await readBody(event);
-      console.log('Body recibido (POST):', body);
+  try {
+    switch (event.node.req.method) {
+      case "POST": {
+        const query = getQuery(event);
+        const { name, password } = query;
 
-      const userFound = users.find(user => user.name === body.name && user.password === body.password);
+        if (!name || !password) {
+          return createError({
+            statusCode: 400,
+            statusMessage: "Nombre y contraseña son requeridos",
+          });
+        }
 
-      if (userFound) {
+        const userFound = users.find(
+          (user) => user.name === name && user.password === password
+        );
+
+        if (!userFound) {
+          return createError({
+            statusCode: 401,
+            statusMessage: "Credenciales incorrectas",
+          });
+        }
         return userFound;
-      } else {
-        throw createError({
-          statusCode: 401, // Use 401 for authentication failure
-          statusMessage: 'Credenciales incorrectas'
-        });
       }
-    } catch (error) {
-      console.error('Error en POST:', error);
-      throw createError({
-        statusCode: 500, // Internal server error
-        statusMessage: 'Error interno del servidor'
-      });
+      case "GET": {
+        const query = getQuery(event);
+        const userId = query.name;
+
+        if (userId) {
+          const user = users.find((user) => user.name === userId);
+          if (!user) {
+            return createError({
+              statusCode: 404,
+              statusMessage: "Usuario no encontrado",
+            });
+          }
+          return user;
+        }
+        return users;
+      }
+      default:
+        return createError({
+          statusCode: 405,
+          statusMessage: "Método no permitido",
+        });
     }
-  } else if (event.node.req.method === 'GET') {
-    console.log('Petición GET recibida');
-    return users; // Devuelve la lista de usuarios para GET
-  } else {
-    throw createError({
-      statusCode: 405,
-      statusMessage: 'Método no permitido'
+  } catch (error) {
+    console.error("Error en la petición:", error);
+    return createError({
+      statusCode: 500,
+      statusMessage: "Error interno del servidor",
+      message: error.message,
     });
   }
 });

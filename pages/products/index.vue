@@ -12,7 +12,7 @@ const { data: products } = await useAsyncData('products', () => $fetch('/api/pro
             </nav>
             <Menu selected="products" />
         </div>
-        <div class="flex flex-col justify-center items-center w-[80%] bg-gray-700">
+        <div class="flex flex-col justify-center items-center w-[80%] bg-gray-700 min-h-screen">
             <Nav :onSearch="handleSearch" />
             <ContentModule :users="products" />
         </div>

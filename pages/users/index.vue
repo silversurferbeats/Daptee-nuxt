@@ -12,15 +12,19 @@ const state = reactive({
     filteredUsers: undefined
 });
 
-const handleSearch = (value) => {
+const handleSearch = async (value) => {
     if (value._rawValue.length === 0) {
         state.filteredUsers = undefined;
     } else {
-        // Fetch BE api to get filtereddata
-        state.filteredUsers = [];
-    }
-}
+        const searchTerm = value._rawValue;
+        const url = `/api/users?name=${encodeURIComponent(searchTerm)}`;
 
+        const { data: userSearch } = await useAsyncData('user', () => $fetch(url, {
+            method: 'get',
+        }));
+        state.filteredUsers = [userSearch._rawValue];
+    }
+};
 </script>
 
 <template>
@@ -31,12 +35,9 @@ const handleSearch = (value) => {
             </nav>
             <Menu selected="users" />
         </div>
-        <div class="flex flex-col justify-center items-center w-[80%] bg-gray-700">
+        <div class="flex flex-col justify-center items-center w-[80%] bg-gray-700 min-h-screen">
             <Nav :onSearch="handleSearch" />
             <ContentModule :users="state.filteredUsers || users" />
         </div>
     </div>
 </template>
-
-
-
