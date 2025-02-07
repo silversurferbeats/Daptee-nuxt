@@ -204,6 +204,22 @@ export default defineEventHandler(async (event) => {
         }
         return users;
       }
+      case "DELETE": {
+        const query = getQuery(event);
+        const itemId = query.id;
+        if (itemId) {
+          const userIndex = users.find((user) => user.id === itemId);
+          if (!userIndex) {
+            return createError({
+              statusCode: 404,
+              statusMessage: "Usuario no encontrado",
+            });
+          }
+          // Eliminar usuario de la lista
+          users.splice(userIndex, 1);
+          return { message: "Usuario eliminado correctamente" };
+        }
+      }
       default:
         return createError({
           statusCode: 405,
