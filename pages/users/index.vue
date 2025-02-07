@@ -2,6 +2,13 @@
 import { useAsyncData } from 'nuxt/app';
 import { reactive } from 'vue';
 import logo from '~/assets/LogoDaptee.svg';
+definePageMeta({
+    middleware: "auth",
+});
+const isAuthenticated = useState("isAuthenticated");
+if (!isAuthenticated.value) {
+    navigateTo("/");
+}
 
 const { data: users } = await useAsyncData('users', () =>
     $fetch('/api/users')

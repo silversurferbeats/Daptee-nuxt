@@ -24,7 +24,6 @@ const handleSubmit = async  () => {
         alert('Usuario incorrecto');
     }
 }
-
 </script>
 
 <template>

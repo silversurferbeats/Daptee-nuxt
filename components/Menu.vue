@@ -1,8 +1,12 @@
+<script setup>
+defineProps(['selected']);
+</script>
+
 <template>
     <div class="sticky top-0 card w-full bg-white p-5 shadow-md shadow-purple-200/50 rounded-md">
         <ul class="w-full sticky top-4 gap-2">
             <li class="flex-center cursor-pointer p-16-semibold w-full whitespace-nowrap">
-                <a href="/users" :class="{ border: selected === 'users' }"
+                <NuxtLink to="/users" :class="{ border: selected === 'users' }"
                     class="p-16-semibold flex size-full gap-4 p-4 group font-semibold rounded-full bg-cover hover:bg-purple-100 hover:shadow-inner focus:bg-gradient-to-r from-purple-400 to-purple-600 focus:text-white text-gray-700 transition-all ease-linear">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="size-6">
                         <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
@@ -17,10 +21,10 @@
                         </g>
                     </svg>
                     Usuarios
-                </a>
+                </NuxtLink>
             </li>
             <li class="flex-center cursor-pointer p-16-semibold w-full whitespace-nowrap">
-                <a href="/products" :class="{ border: selected === 'products' }"
+                <NuxtLink to="/products" :class="{ border: selected === 'products' }"
                     class="p-16-semibold flex size-full gap-4 p-4 group font-semibold rounded-full bg-cover hover:bg-purple-100 hover:shadow-inner focus:bg-gradient-to-r from-purple-400 to-purple-600 focus:text-white text-gray-700 transition-all ease-linear">
                     <svg stroke="#000000" class="icon glyph size-6 group-focus:fill-white group-focus:stroke-white"
                         id="dashboard-alt" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#000000">
@@ -33,38 +37,8 @@
                         </g>
                     </svg>
                     Productos
-                </a>
+                </NuxtLink>
             </li>
         </ul>
     </div>
 </template>
-
-<script setup>
-defineProps(['selected']);
-
-// import { ref } from 'vue';
-
-// const products = ref([]);
-
-// const fetchProducts = async () => {
-//     try {
-//         const response = await fetch('/api/products');
-//         products.value = await response.json();
-//         console.log('products -->', products)
-//     } catch (error) {
-//         console.error('Error al cargar los productos:', error);
-//     }
-// };
-
-// const users = ref([]);
-
-// const fetchUsers = async () => {
-//     try {
-//         const response = await fetch('/api/users');
-//         users.value = await response.json();
-//         console.log('users -->', users)
-//     } catch (e) {
-//         console.error('Error al cargar los usuarios:', users);
-//     }
-// }
-</script>

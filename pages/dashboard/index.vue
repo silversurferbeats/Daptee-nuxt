@@ -2,6 +2,13 @@
 import Nav from '~/components/Nav.vue';
 import Menu from '~/components/Menu.vue';
 import logo from '~/assets/LogoDaptee.svg';
+definePageMeta({
+    middleware: "auth",
+});
+const isAuthenticated = useState("isAuthenticated");
+if (!isAuthenticated.value) {
+    navigateTo("/");
+}
 </script>
 
 <template>
