@@ -4,6 +4,7 @@ const props = defineProps(['users']);
 
 const showItem = ref(false);
 const showDelete = ref(false);
+const showView = ref(false);
 const popupPosition = ref({ top: 0, left: 0 });
 const selectedUser = ref(null);
 
@@ -16,7 +17,17 @@ const toggleItem = (event, user) => {
 
 const handleShow = () => {
     if (!selectedUser.value) return;
-    console.log('Mostrar vista Item')
+    showItem.value = !showItem.value;
+    showView.value = !showView.value;
+}
+
+const cancelShow = () => {
+    showView.value = !showView.value;
+}
+
+const handleDelete = () => {
+    showItem.value = !showItem.value;
+    showDelete.value = !showDelete.value;
 }
 
 const fetchDelete = async () => {
@@ -33,11 +44,6 @@ const fetchDelete = async () => {
         console.error("Error deleting user:", error);
     }
 };
-
-const handleDelete = () => {
-    showItem.value = !showItem.value;
-    showDelete.value = !showDelete.value;
-}
 
 const cancelDelete = () => {
     showDelete.value = !showDelete.value;
@@ -84,4 +90,61 @@ const cancelDelete = () => {
         </div>
     </div>
 
+    <div v-if="showView"
+        class="absolute w-[30rem] h-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-xl z-50">
+        <div
+            class="relative flex w-full flex-col rounded-xl bg-gradient-to-br from-white to-gray-50 bg-clip-border text-gray-700 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-clip-border shadow-lg group">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 opacity-90">
+                </div>
+                <div
+                    class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:20px_20px] animate-pulse">
+                </div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <svg v-if="selectedUser.price" viewBox="0 0 24 24" fill="currentColor"
+                        class="w-20 h-20 text-white/90 transform transition-transform group-hover:scale-110 duration-300">
+                        <path d="M21 7l-9-5-9 5 9 5 9-5zm-9 7l-9-5v6l9 5 9-5v-6l-9 5z"></path>
+                    </svg>
+                    <svg v-else viewBox="0 0 24 24" fill="currentColor"
+                        class="w-20 h-20 text-white/90 transform transition-transform group-hover:scale-110 duration-300">
+                        <path
+                            d="M12 2a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 12c-5.33 0-8 2.67-8 4v2h16v-2c0-1.33-2.67-4-8-4z">
+                        </path>
+                    </svg>
+                </div>
+            </div>
+            <div class="p-6">
+                <h5
+                    class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-gray-900 antialiased group-hover:text-blue-600 transition-colors duration-300">
+                    {{ selectedUser.name }}
+                </h5>
+                <p v-if="selectedUser.id"
+                    class="block font-sans text-base font-light leading-relaxed text-gray-700 antialiased">
+                    Identificacion: {{ selectedUser.id }}
+                </p>
+                <p v-if="selectedUser.email"
+                    class="block font-sans text-base font-light leading-relaxed text-gray-700 antialiased">
+                    Correo: {{ selectedUser.email }}
+                </p>
+                <p v-if="selectedUser.price"
+                    class="block font-sans text-base font-light leading-relaxed text-gray-700 antialiased">
+                    Precio: ${{ selectedUser.price }}
+                </p>
+            </div>
+            <div class="p-6 pt-0">
+                <button @click="cancelShow"
+                    class="group relative w-full inline-flex items-center justify-center px-6 py-3 font-bold text-white rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 shadow-lg shadow-blue-500/30 hover:shadow-blue-500/40 transition-all duration-300 hover:-translate-y-0.5">
+                    <span class="relative flex items-center gap-2">
+                        Cerrar
+                        <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                            class="w-5 h-5 transform transition-transform group-hover:translate-x-1">
+                            <path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-width="2" stroke-linejoin="round"
+                                stroke-linecap="round"></path>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
+
+    </div>
 </template>
