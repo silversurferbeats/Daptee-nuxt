@@ -327,27 +327,7 @@ export default defineEventHandler(async (event) => {
   try {
     switch (event.node.req.method) {
       case "POST": {
-        const query = getQuery(event);
-        const { name, password } = query;
-
-        if (!name || !password) {
-          return createError({
-            statusCode: 400,
-            statusMessage: "Nombre y contraseña son requeridos",
-          });
-        }
-
-        const productFound = products.find(
-          (product) => product.name === name && product.password === password
-        );
-
-        if (!productFound) {
-          return createError({
-            statusCode: 401,
-            statusMessage: "Credenciales incorrectas",
-          });
-        }
-        return productFound;
+        console.error('aun no esta habilitado este metodo :c')
       }
       case "GET": {
         const query = getQuery(event);

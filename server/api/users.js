@@ -1,4 +1,4 @@
-import { createError, getQuery } from "h3";
+import { createError, getQuery, readBody } from "h3";
 
 export default defineEventHandler(async (event) => {
   const users = [
@@ -175,27 +175,18 @@ export default defineEventHandler(async (event) => {
   try {
     switch (event.node.req.method) {
       case "POST": {
-        const query = getQuery(event);
-        const { name, password } = query;
-
-        if (!name || !password) {
-          return createError({
-            statusCode: 400,
-            statusMessage: "Nombre y contraseña son requeridos",
-          });
-        }
-
+        const body = await readBody(event);
         const userFound = users.find(
-          (user) => user.name === name && user.password === password
+          (user) => user.name === body.name && user.password === body.password
         );
-
-        if (!userFound) {
-          return createError({
-            statusCode: 401,
+        if (userFound) {
+          return userFound;
+        } else {
+          throw createError({
+            statusCode: 401, // Use 401 for authentication failure
             statusMessage: "Credenciales incorrectas",
           });
         }
-        return userFound;
       }
       case "GET": {
         const query = getQuery(event);

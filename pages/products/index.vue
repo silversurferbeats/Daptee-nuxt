@@ -5,7 +5,7 @@ import logo from '~/assets/LogoDaptee.svg';
 const { data: products } = await useAsyncData('products', () => $fetch('/api/products'));
 
 const state = reactive({
-    filteredUsers: undefined
+    filteredProducts: undefined
 });
 
 const handleSearch = async (value) => {
@@ -33,7 +33,7 @@ const handleSearch = async (value) => {
         </div>
         <div class="flex flex-col justify-center items-center w-[80%] bg-gray-700 min-h-screen">
             <Nav :onSearch="handleSearch" />
-            <ContentModule :users="state.filteredUsers || products" />
+            <ContentModule :users="state.filteredProducts || products" />
         </div>
     </div>
 </template>

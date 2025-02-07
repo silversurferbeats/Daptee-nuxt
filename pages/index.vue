@@ -17,7 +17,7 @@ const handleSubmit = async  () => {
         }
     }));
 
-    if(user){
+    if (user._rawValue && user._rawValue.name === form.value.email && user._rawValue.password === form.value.password && user._rawValue.id ){
         localStorage.setItem('user', JSON.stringify(user.value));
         navigateTo('/dashboard');
     } else {
