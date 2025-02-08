@@ -74,12 +74,12 @@ const cancelDelete = () => {
     </div>
 
     <div v-if="showDelete" role="alert"
-        class="absolute w-[30rem] h-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-xl z-50">
+        class="absolute w-[25rem] md:w-[30rem] h-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-xl z-50">
         <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
             Eliminar
         </div>
         <div
-            class="flex flex-col justify-center items-center border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700 gap-4">
+            class="flex flex-col justify-center items-center border border-t-0 border-red-400 rounded-b bg-gray-700 px-4 py-3 text-white gap-4">
             <p>Seguro que quiere eliminar el item?</p>
             <div class="flex gap-4">
                 <button @click="cancelDelete"
@@ -91,7 +91,7 @@ const cancelDelete = () => {
     </div>
 
     <div v-if="showView"
-        class="absolute w-[30rem] h-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-xl z-50">
+        class="absolute w-[25rem] md:w-[30rem] h-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-xl z-50">
         <div
             class="relative flex w-full flex-col rounded-xl bg-gradient-to-br from-white to-gray-50 bg-clip-border text-gray-700 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
             <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-clip-border shadow-lg group">
@@ -146,6 +146,5 @@ const cancelDelete = () => {
                 </button>
             </div>
         </div>
-
     </div>
 </template>

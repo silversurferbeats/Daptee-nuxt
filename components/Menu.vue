@@ -6,8 +6,7 @@ defineProps(['selected']);
     <div class="sticky top-0 card w-full p-5 rounded-md">
         <ul class="w-full sticky top-4 gap-2">
             <li class="flex-center cursor-pointer p-16-semibold w-full whitespace-nowrap mt-4">
-                <NuxtLink to="/users" :class="{ border: selected === 'users' }"
-                    class="p-16-semibold flex size-full gap-4 p-4 group font-semibold rounded-full bg-cover hover:bg-purple-400 hover:shadow-inner focus:bg-gradient-to-r from-[#755EF3] to-purple-600 focus:text-white text-gray-700 transition-all ease-linear">
+                <NuxtLink to="/users" :class="{ border: selected === 'users' }" class=" flex size-full gap-4 p-4 group font-semibold rounded-full bg-cover hover:bg-purple-400 hover:shadow-inner focus:bg-gradient-to-r from-[#755EF3] to-purple-600 focus:text-white text-gray-700 transition-all ease-linear">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="size-6">
                         <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
                         <g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g>
@@ -20,7 +19,7 @@ defineProps(['selected']);
                             </path>
                         </g>
                     </svg>
-                    Usuarios
+                    <span class="hidden sm:ml-6 sm:block">Usuarios</span>
                 </NuxtLink>
             </li>
             <li class="flex-center cursor-pointer p-16-semibold w-full whitespace-nowrap mt-4">
@@ -36,7 +35,7 @@ defineProps(['selected']);
                             <path d="M22,4V8H2V4A2,2,0,0,1,4,2H20A2,2,0,0,1,22,4Z"></path>
                         </g>
                     </svg>
-                    Productos
+                    <span class="hidden sm:ml-6 sm:block">Productos</span>
                 </NuxtLink>
             </li>
         </ul>

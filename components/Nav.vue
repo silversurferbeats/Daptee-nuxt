@@ -30,9 +30,9 @@ const logout = () => {
     <nav class="sticky top-0 w-full bg-gray-800">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div class="relative flex h-16 items-center justify-between">
-                <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                    <div class="hidden sm:ml-6 sm:block">
-                        <div class="flex">
+                <div class="flex flex-1 items-center justify-left ">
+                    <!-- <div class="hidden sm:ml-6 sm:block"> -->
+                        <div class="flex w-[15rem] md:w-full">
                             <div
                                 class="flex w-10 items-center justify-center rounded-tl-lg rounded-bl-lg border-r border-gray-200 bg-white p-5">
                                 <svg viewBox="0 0 20 20" aria-hidden="true"
@@ -48,7 +48,7 @@ const logout = () => {
                             <input type="button" value="Search"
                                 class="bg-[#755EF3] hover:bg-[#513ebc] p-2 rounded-tr-lg rounded-br-lg text-white font-semibold transition-colors">
                         </div>
-                    </div>
+                    <!-- </div> -->
                 </div>
                 <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                     <!-- <button type="button"
