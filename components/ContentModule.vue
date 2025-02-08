@@ -52,14 +52,14 @@ const cancelDelete = () => {
 
 <template>
     <ul v-if="users.length > 0"
-        class="w-[90%] h-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+        class="w-[90%] h-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white mt-9">
         <li v-for="user in users" :key="user.id" class="flex justify-between items-center w-full px-4 py-2 border-b border-gray-200 cursor-pointer
             hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700
             focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white
             dark:focus:ring-gray-500 dark:focus:text-white">
             <span>{{ user.name }}</span>
             <button @click="toggleItem($event, user)"
-                class="ml-4 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                class="ml-4 bg-[#755EF3] hover:bg-[#513ebc] text-white px-3 py-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-[#755EF3]">
                 ...
             </button>
         </li>
@@ -83,9 +83,9 @@ const cancelDelete = () => {
             <p>Seguro que quiere eliminar el item?</p>
             <div class="flex gap-4">
                 <button @click="cancelDelete"
-                    class="w-[6rem] ml-4 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">cancelar</button>
+                    class="w-[6rem] ml-4 bg-[#755EF3] hover:bg-[#513ebc] text-white px-3 py-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">cancelar</button>
                 <button @click="fetchDelete"
-                    class="w-[6rem] ml-4 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">aceptar</button>
+                    class="w-[6rem] ml-4 bg-[#755EF3] hover:bg-[#513ebc] text-white px-3 py-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">aceptar</button>
             </div>
         </div>
     </div>
@@ -95,10 +95,11 @@ const cancelDelete = () => {
         <div
             class="relative flex w-full flex-col rounded-xl bg-gradient-to-br from-white to-gray-50 bg-clip-border text-gray-700 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
             <div class="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-clip-border shadow-lg group">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 opacity-90">
+                <div
+                    class="absolute inset-0 bg-gradient-to-r from-blue-[#513ebc] via-[#513ebc] to-indigo-600 opacity-90">
                 </div>
                 <div
-                    class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:20px_20px] animate-pulse">
+                    class="absolute inset-0 bg-[linear-gradient(to_right,#513ebc_1px,transparent_1px),linear-gradient(to_bottom,#513ebc_1px,transparent_1px)] bg-[size:20px_20px] animate-pulse">
                 </div>
                 <div class="absolute inset-0 flex items-center justify-center">
                     <svg v-if="selectedUser.price" viewBox="0 0 24 24" fill="currentColor"
@@ -133,7 +134,7 @@ const cancelDelete = () => {
             </div>
             <div class="p-6 pt-0">
                 <button @click="cancelShow"
-                    class="group relative w-full inline-flex items-center justify-center px-6 py-3 font-bold text-white rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 shadow-lg shadow-blue-500/30 hover:shadow-blue-500/40 transition-all duration-300 hover:-translate-y-0.5">
+                    class="group relative w-full inline-flex items-center justify-center px-6 py-3 font-bold text-white rounded-lg bg-gradient-to-r from-[#513ebc] to-[#513ebc] hover:from-[#513ebc] hover:to-[#513ebc] shadow-lg shadow-[#513ebc] hover:shadow-[#513ebc] transition-all duration-300 hover:-translate-y-0.5">
                     <span class="relative flex items-center gap-2">
                         Cerrar
                         <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"
