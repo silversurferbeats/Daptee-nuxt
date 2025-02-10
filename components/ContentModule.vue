@@ -52,7 +52,7 @@ const cancelDelete = () => {
 
 <template>
     <ul v-if="users.length > 0"
-        class="w-[90%] h-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white mt-9">
+        class="h-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white mt-9">
         <li v-for="user in users" :key="user.id" class="flex justify-between items-center w-full px-4 py-2 border-b border-gray-200 cursor-pointer
             hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700
             focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white

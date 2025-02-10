@@ -1,5 +1,5 @@
 <script setup>
-import imageBG from "../public/ImgBg.png";
+import imageBG from "../public/ImgBg3.png";
 import { ref } from "vue";
 import { useAsyncData } from 'nuxt/app';
 

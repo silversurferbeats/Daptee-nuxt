@@ -3,29 +3,45 @@ defineProps(['selected']);
 </script>
 
 <template>
-    <div class="sticky top-0 card w-full p-5 rounded-md">
-        <ul class="w-full sticky top-4 gap-2">
-            <li class="flex-center cursor-pointer p-16-semibold w-full whitespace-nowrap mt-4">
-                <NuxtLink to="/users" :class="{ border: selected === 'users' }" class=" flex size-full gap-4 p-4 group font-semibold rounded-full bg-cover hover:bg-purple-400 hover:shadow-inner focus:bg-gradient-to-r from-[#755EF3] to-purple-600 focus:text-white text-gray-700 transition-all ease-linear">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="size-6">
+    <div class="sticky  top-0 card w-full md:p-5 rounded-md">
+        <ul class="w-full flex flex-row md:flex-col bg-white md:bg-transparent  gap-2">
+            <li class="flex flex-center cursor-pointer p-16-semibold w-full whitespace-nowrap md:mt-4 ml-8 md:ml-0">
+                <NuxtLink to="/dashboard" :class="{ border: selected === 'users' }"
+                    class=" flex size-full gap-4 p-4 group font-semibold rounded-full bg-cover hover:bg-purple-400 hover:shadow-inner focus:bg-gradient-to-r from-[#755EF3] to-purple-600 focus:text-white text-gray-700 transition-all ease-linear">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-10">
                         <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
                         <g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g>
                         <g id="SVGRepo_iconCarrier">
                             <path class="group-focus:fill-white" fill="#000000"
-                                d="M17.2929 14.2929C16.9024 14.6834 16.9024 15.3166 17.2929 15.7071C17.6834 16.0976 18.3166 16.0976 18.7071 15.7071L21.6201 12.7941C21.6351 12.7791 21.6497 12.7637 21.6637 12.748C21.87 12.5648 22 12.2976 22 12C22 11.7024 21.87 11.4352 21.6637 11.252C21.6497 11.2363 21.6351 11.2209 21.6201 11.2059L18.7071 8.29289C18.3166 7.90237 17.6834 7.90237 17.2929 8.29289C16.9024 8.68342 16.9024 9.31658 17.2929 9.70711L18.5858 11H13C12.4477 11 12 11.4477 12 12C12 12.5523 12.4477 13 13 13H18.5858L17.2929 14.2929Z">
-                            </path>
-                            <path class="group-focus:fill-white" fill="#000"
-                                d="M5 2C3.34315 2 2 3.34315 2 5V19C2 20.6569 3.34315 22 5 22H14.5C15.8807 22 17 20.8807 17 19.5V16.7326C16.8519 16.647 16.7125 16.5409 16.5858 16.4142C15.9314 15.7598 15.8253 14.7649 16.2674 14H13C11.8954 14 11 13.1046 11 12C11 10.8954 11.8954 10 13 10H16.2674C15.8253 9.23514 15.9314 8.24015 16.5858 7.58579C16.7125 7.4591 16.8519 7.35296 17 7.26738V4.5C17 3.11929 15.8807 2 14.5 2H5Z">
+                                d="M12 3L3 10V21C3 21.5523 3.44772 22 4 22H9V15H15V22H20C20.5523 22 21 21.5523 21 21V10L12 3Z">
                             </path>
                         </g>
                     </svg>
-                    <span class="hidden sm:ml-6 sm:block">Usuarios</span>
+
+                    <span class="hidden sm:ml-6 sm:block mt-2">Dashboard</span>
                 </NuxtLink>
             </li>
-            <li class="flex-center cursor-pointer p-16-semibold w-full whitespace-nowrap mt-4">
+            <li class="flex flex-center cursor-pointer p-16-semibold w-full whitespace-nowrap md:mt-4">
+                <NuxtLink to="/users" :class="{ border: selected === 'users' }"
+                    class=" flex size-full gap-4 p-4 group font-semibold rounded-full bg-cover hover:bg-purple-400 hover:shadow-inner focus:bg-gradient-to-r from-[#755EF3] to-purple-600 focus:text-white text-gray-700 transition-all ease-linear">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-12">
+                        <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+                        <g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <circle cx="12" cy="8" r="4" fill="#000000"></circle>
+                            <path fill="#000000"
+                                d="M4 21C4 17.134 7.13401 14 11 14H13C16.866 14 20 17.134 20 21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21Z">
+                            </path>
+                        </g>
+                    </svg>
+
+                    <span class="hidden sm:ml-6 sm:block mt-2">Usuarios</span>
+                </NuxtLink>
+            </li>
+            <li class="flex-center cursor-pointer p-16-semibold w-full whitespace-nowrap md:mt-4">
                 <NuxtLink to="/products" :class="{ border: selected === 'products' }"
                     class="p-16-semibold flex size-full gap-4 p-4 group font-semibold rounded-full bg-cover hover:bg-purple-400 hover:shadow-inner focus:bg-gradient-to-r from-[#755EF3] to-purple-600 focus:text-white text-gray-700 transition-all ease-linear">
-                    <svg stroke="#000000" class="icon glyph size-6 group-focus:fill-white group-focus:stroke-white"
+                    <svg stroke="#000000" class="icon glyph w-10 group-focus:fill-white group-focus:stroke-white"
                         id="dashboard-alt" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#000000">
                         <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
                         <g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g>
@@ -35,7 +51,7 @@ defineProps(['selected']);
                             <path d="M22,4V8H2V4A2,2,0,0,1,4,2H20A2,2,0,0,1,22,4Z"></path>
                         </g>
                     </svg>
-                    <span class="hidden sm:ml-6 sm:block">Productos</span>
+                    <span class="hidden sm:ml-6 sm:block mt-2">Productos</span>
                 </NuxtLink>
             </li>
         </ul>
