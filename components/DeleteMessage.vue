@@ -4,11 +4,6 @@ console.log('propsss -->', props.user)
 const handleDelete = () => {
     // fetch aPi
 }
-
-// const cancelDelete = () => {
-//     cancelDelete.value = !cancelDelete.value 
-// }
-
 </script>
 
 <template>
