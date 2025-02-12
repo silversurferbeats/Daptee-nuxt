@@ -4,11 +4,11 @@ import logo from '~/assets/LogoDaptee.svg';
 
 <template>
     <div class="relative">
-        <div class="relative w-64 h-64">
+        <div class="relative w-32 h-32">
             <div class="absolute w-full h-full rounded-full border-[3px] border-gray-100/10 border-r-[#0ff] border-b-[#0ff] animate-spin"
                 style="animation-duration: 3s;"></div>
-            <div class="absolute mt-22 ml-5">
-                <img class="h-16 w-auto" :src="logo" alt="Daptee">
+            <div class="absolute p-8">
+                <img class="h-14 w-auto" :src="logo" alt="Daptee">
             </div>
 
             <div class="absolute w-full h-full rounded-full border-[3px] border-gray-100/10 border-t-[#0ff] animate-spin"

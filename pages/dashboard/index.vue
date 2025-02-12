@@ -23,8 +23,11 @@ if (!isAuthenticated.value) {
             <Nav />
             <Menu selected="dashboard" class="md:hidden" />
             <div
-                class="flex justify-center items-center w-[90%] h-full text-sm font-medium text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                class="flex flex-col justify-center items-center w-[90%] h-full text-sm text-center font-medium text-gray-900 dark:bg-gray-700 dark:border-gray-600 dark:text-white gap-4">
                 <DashboardAnimation />
+                <h1 class="text-4xl text-[#3BCDBD]">Dashboard</h1>
+
+                <h2 class="text-lg text-[#3BCDBD]">Ingrese a Usuarios o Productos segun su interes.</h2>
             </div>
         </div>
     </div>
